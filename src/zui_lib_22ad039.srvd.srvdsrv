@@ -1,0 +1,4 @@
+@EndUserText.label: 'Service Definition for Library'
+define service ZUI_LIB_22AD039 {
+  expose ZC_LIB_22AD039 as Books;
+}

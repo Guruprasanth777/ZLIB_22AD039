@@ -1,0 +1,30 @@
+managed implementation in class zbp_i_lib_22ad039 unique;
+strict ( 2 );
+
+define behavior for ZI_LIB_22AD039 alias Book
+persistent table zlib_22ad039
+lock master
+authorization master ( instance )
+etag master LastChangedAt
+{
+  create;
+  update;
+  delete;
+
+  // THE MAGIC LINE: SAP automatically creates a UUID when you click Save
+  field ( numbering : managed, readonly ) BookUuid;
+
+  // Prevent users from manually typing in the timestamp
+  field ( readonly ) LastChangedAt;
+
+  // Map your CDS View fields back to the actual Database Table columns
+  mapping for zlib_22ad039
+  {
+    BookUuid      = book_uuid;
+    BookName      = book_name;
+    Author        = author;
+    Category      = category;
+    Available     = available;
+    LastChangedAt = last_changed_at;
+  }
+}
